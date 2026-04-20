@@ -37,6 +37,7 @@ QCDTBS += \
 	$(LOCAL_DIR)/msm8916-vivo-pd1505f.dtb \
 	$(LOCAL_DIR)/msm8916-vivo-pd1510.dtb \
 	$(LOCAL_DIR)/msm8916-vivo-y21l.dtb \
+	$(LOCAL_DIR)/msm8916-zte-speed.dtb \
 	$(LOCAL_DIR)/msm8929-samsung.dtb \
 	$(LOCAL_DIR)/msm8929-qrd-wt82918hd.dtb \
 	$(LOCAL_DIR)/msm8939-asus-z00t.dtb \

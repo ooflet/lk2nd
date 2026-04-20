@@ -1,0 +1,57 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
+#include <skeleton64.dtsi>
+#include <lk2nd.dtsi>
+
+/ {
+	qcom,msm-id = <0xce 0x00 0xf8 0x00 0xf9 0x00 0xfa 0x00>;
+	qcom,board-id = <0x64 0x00>;
+};
+
+&lk2nd {
+	speed {
+		model = "ZTE Speed (N9130)";
+		compatible = "zte,speed", "zte,n9130";
+
+		lk2nd,dtb-files = "msm8916-zte-speed";
+
+		lk2nd,match-cmdline = "*zte-lead*";
+
+		lk2nd,match-panel;
+		panel {
+			compatible = "zte,speed-panel", "lk2nd,panel";
+
+			qcom,zte-lead-hx8379a-fwvga-video {
+				compatible = "zte,lead-hx8379a-cpt";
+			};
+
+			qcom,zte-boe-otm8019a-fwvga-video {
+				compatible = "zte,boe-otm8019a";
+			};
+
+			qcom,zte-yushun-hx8379c-fwvga-video {
+				compatible = "zte,yushun-hx8379c-boe";
+			};
+		};
+
+		/*
+		 * GPIO keys confirmed from downstream DTB gpio_keys node:
+		 *   vol_up:   GPIO 107 (0x6b), active low
+		 *   vol_down: GPIO 109 (0x6d), active low
+		 *   snapshot: GPIO 108 (0x6c), active low (not mapped for lk2nd)
+		 */
+		gpio-keys {
+			compatible = "gpio-keys";
+
+			volume-up {
+				lk2nd,code = <KEY_VOLUMEUP>;
+				gpios = <&tlmm 107 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+			};
+
+			volume-down {
+				lk2nd,code = <KEY_VOLUMEDOWN>;
+				gpios = <&tlmm 109 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+			};
+		};
+	};
+};
